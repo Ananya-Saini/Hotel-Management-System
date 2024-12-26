@@ -6,8 +6,9 @@ import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener{
 
-    JTextField username, password;
+    JTextField username;
     JButton login, cancel;
+    JPasswordField password;
     Login(){
         getContentPane().setBackground(Color.WHITE);
 
@@ -25,7 +26,7 @@ public class Login extends JFrame implements ActionListener{
         pass.setBounds(40, 70, 100, 30);
         add(pass);
 
-        password = new JTextField();
+        password = new JPasswordField();
         password.setBounds(150, 70, 150, 30);
         add(password);
 
@@ -60,7 +61,7 @@ public class Login extends JFrame implements ActionListener{
             String pass = password.getText();
             try{
                 Conn c = new Conn();
-                String query = "select * from login where username = '" + user + "' and password = '" + password + "'";
+                String query = "select * from login where username = '" + user + "' and password = '" + pass + "'";
 
                 ResultSet rs = c.s.executeQuery(query);
 
