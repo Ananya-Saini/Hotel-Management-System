@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Reception extends JFrame implements ActionListener{
 
-    JButton newCustomer, rooms, department;
+    JButton newCustomer, rooms, department, allEmployees, manager, customers;
 
     Reception(){
         getContentPane().setBackground(Color.WHITE);
@@ -32,22 +32,25 @@ public class Reception extends JFrame implements ActionListener{
         department.addActionListener(this);
         add(department);
 
-        JButton allEmployees = new JButton("All Employees");
+        allEmployees = new JButton("All Employees");
         allEmployees.setBackground(Color.BLACK);
         allEmployees.setBounds(10, 150, 200, 30);
         allEmployees.setForeground(Color.WHITE);
+        allEmployees.addActionListener(this);
         add(allEmployees);
 
-        JButton customers = new JButton("Customer Info");
+        customers = new JButton("Customer Info");
         customers.setBackground(Color.BLACK);
         customers.setBounds(10, 190, 200, 30);
         customers.setForeground(Color.WHITE);
+        customers.addActionListener(this);
         add(customers);
 
-        JButton manager = new JButton("Manager Info");
+        manager = new JButton("Manager Info");
         manager.setBackground(Color.BLACK);
         manager.setBounds(10, 230, 200, 30);
         manager.setForeground(Color.WHITE);
+        manager.addActionListener(this);
         add(manager);
 
         JButton checkout = new JButton("Checkout");
@@ -107,6 +110,18 @@ public class Reception extends JFrame implements ActionListener{
         else if(ae.getSource() == department){
             setVisible(false);
             new Department();
+        }
+        else if(ae.getSource() == allEmployees){
+            setVisible(false);
+            new EmployeeInfo();
+        }
+        else if(ae.getSource() == manager){
+            setVisible(false);
+            new ManagerInfo();
+        }
+        else if(ae.getSource() == customers){
+            setVisible(false);
+            new CustomerInfo();
         }
     }
 
