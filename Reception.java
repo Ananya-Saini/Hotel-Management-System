@@ -1,27 +1,35 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Reception extends JFrame{
+public class Reception extends JFrame implements ActionListener{
+
+    JButton newCustomer, rooms, department;
+
     Reception(){
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-        JButton newCustomer = new JButton("New Customer Form");
+        newCustomer = new JButton("New Customer Form");
         newCustomer.setBounds(10, 30, 200, 30);
         newCustomer.setBackground(Color.BLACK);
         newCustomer.setForeground(Color.WHITE);
+        newCustomer.addActionListener(this);
         add(newCustomer);
 
-        JButton rooms = new JButton("Rooms");
+        rooms = new JButton("Rooms");
         rooms.setBackground(Color.BLACK);
         rooms.setBounds(10, 70, 200, 30);
         rooms.setForeground(Color.WHITE);
+        rooms.addActionListener(this);
         add(rooms);
 
-        JButton department = new JButton("Department");
+        department = new JButton("Department");
         department.setBackground(Color.BLACK);
         department.setBounds(10, 110, 200, 30);
         department.setForeground(Color.WHITE);
+        department.addActionListener(this);
         add(department);
 
         JButton allEmployees = new JButton("All Employees");
@@ -85,6 +93,21 @@ public class Reception extends JFrame{
 
         setBounds(350, 200, 800, 570);
         setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == newCustomer) {
+            setVisible(false);
+            new AddCustomer();
+        }
+        else if(ae.getSource() == rooms){
+            setVisible(false);
+            new Rooms();
+        }
+        else if(ae.getSource() == department){
+            setVisible(false);
+            new Department();
+        }
     }
 
     public static void main(String[] args) {
